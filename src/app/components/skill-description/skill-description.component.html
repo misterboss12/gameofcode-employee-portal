@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>Skill Level Description</h1>
+<div class="divider-top">
+  <mat-divider></mat-divider>
+</div>
+
+<div class="description">
+  <mat-card-subtitle>{{ skillDescription }}</mat-card-subtitle>
+</div>
+
+<div class="divider-bottom">
+  <mat-divider></mat-divider>
+</div>
+
+<div>
+  <button
+    class="edit-description-button"
+    mat-raised-button
+    color="primary"
+    mat-dialog-close
+    (click)="openEditDescDialog()"
+  >
+    Edit Description
+  </button>
+  <button class="close-button" mat-button color="accent" mat-dialog-close>Close</button>
+</div>

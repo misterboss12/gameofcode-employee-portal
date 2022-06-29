@@ -1,0 +1,123 @@
+.mat-dialog-title {
+  display: block;
+  margin: 0;
+  float: left;
+}
+
+.save-skill-button {
+  float: right;
+}
+
+.discard-button {
+  transform: translateX(-30%);
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-raised-button {
+  margin: 0 10px 0 0;
+}
+
+.skill-level-stars {
+  width: 45%;
+  float: right;
+  margin-left: 2px;
+}
+
+.select-skill {
+  width: 45%;
+  float: left;
+  margin-right: 2px;
+}
+
+.icon-star {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 65px;
+  padding: 0px 37px 24px;
+  display: contents;
+}
+
+.skill-levels-legend {
+  clear: both;
+}
+
+.skill-level-legend-stars {
+  cursor: default;
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 30px;
+}
+
+.blue-icon {
+  color: #03a9f4;
+}
+
+.icon-star:hover {
+  color: #03a9f4;
+}
+
+.select-skill-dropdown {
+  margin-left: -9px;
+  width: 100%;
+}
+
+.skill-level-name {
+  margin-bottom: -1px;
+}
+
+.level-name {
+  margin: 0;
+  font-weight: bold;
+  font-size: 15px;
+  color: black;
+  width: 30%;
+}
+
+.level-legend-col1 {
+  width: 160px;
+  float: left;
+}
+
+.level-legend-col2 {
+  width: 630px;
+  float: left;
+}
+
+.skill-level-row {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.level-exp {
+  font-weight: bold;
+  float: left;
+  padding-left: 5px;
+}
+
+.level-desc {
+  margin: 0;
+  padding: 5px;
+  width: 800px;
+}
+
+.divider-top {
+  position: relative;
+  margin-top: 25px;
+  width: 1000px;
+  margin-left: -24px;
+}
+
+.divider-bottom {
+  position: relative;
+  margin-bottom: 20px;
+  width: 1000px;
+  margin-left: -24px;
+}
+
+.info-messages {
+  font-size: 16px;
+  margin-bottom: 10px !important;
+}

@@ -1,0 +1,58 @@
+<app-breadcumb-toolbar breadcumbPath="Conferences | Trainings"></app-breadcumb-toolbar>
+<div class="container">
+  <div class="column column-12">
+    <div class="actionToolbar">
+      <button mat-raised-button (click)="addConference()" color="primary">Add Conference/Training</button>
+      <div class="filter-form-field">
+        <input (keyup)="filterByName($event.target.value)" placeholder="Filter by Name" />
+      </div>
+    </div>
+  </div>
+  <div class="column column-12">
+    <table mat-table [dataSource]="filteredConferences" class="mat-elevation-z8">
+      <ng-container matColumnDef="conferenceType">
+        <th mat-header-cell *matHeaderCellDef>Type</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.conferenceType }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="conferenceName">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.conferenceName }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dateAttended">
+        <th mat-header-cell *matHeaderCellDef>Date Attended</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.dateAttended }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="assignedBy">
+        <th mat-header-cell *matHeaderCellDef>Assigned By</th>
+        <td mat-cell *matCellDef="let element">{{ element.assignedBy.firstName }} {{ element.assignedBy.lastName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="certification">
+        <th mat-header-cell *matHeaderCellDef>Certification</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.certification }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef class="column-align-end">Action</th>
+        <td mat-cell *matCellDef="let element" class="column-align-end">
+          <button mat-raised-button (click)="editConference(element)" color="primary">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-raised-button color="warn" (click)="deleteConference(element)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="conferenceColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: conferenceColumns"></tr>
+    </table>
+  </div>
+</div>

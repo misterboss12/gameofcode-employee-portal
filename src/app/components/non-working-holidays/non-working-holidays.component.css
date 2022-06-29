@@ -1,0 +1,9 @@
+@media print {
+  .mat-raised-button {
+    display: none !important;
+  }
+
+  table {
+    box-shadow: none;
+  }
+}

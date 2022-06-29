@@ -1,0 +1,24 @@
+<nav class="breadcumb">
+  <ol *ngIf="pathArray.length > 0" class="breadcumb-list">
+    <li *ngFor="let path of pathArray" class="breadcrumb-item">{{ path }}</li>
+  </ol>
+  <div class="breadcumb-actions">
+    <button [matMenuTriggerFor]="menu" *ngIf="isLogged" mat-raised-button>
+      {{ userData.employee.firstName }} {{ userData.employee.lastName }}
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['/', routePaths.Profile]">
+        <mat-icon>face</mat-icon>
+        <span>Profile</span>
+      </button>
+      <button [routerLink]="['/', routePaths.Settings]" mat-menu-item>
+        <mat-icon>settings</mat-icon>
+        <span>Settings</span>
+      </button>
+      <button (click)="logout()" mat-menu-item>
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </div>
+</nav>

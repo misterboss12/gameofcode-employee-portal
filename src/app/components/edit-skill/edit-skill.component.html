@@ -1,0 +1,128 @@
+<div *ngIf="!isUpdateSkillDescription()">
+  <h1 mat-dialog-title>Edit Skill</h1>
+  <div class="divider-top">
+    <mat-divider></mat-divider>
+  </div>
+  <form class="editSkillForm" [formGroup]="editSkillForm" (ngSubmit)="editSkillFromForm()">
+    <div class="skill-level-stars" (mouseleave)="mouseLeaveStars()">
+      <mat-icon
+        class="icon-star"
+        data-rank="1"
+        (mouseenter)="mouseOverStars($event)"
+        (click)="getSkillLevelFilter($event)"
+        >grade</mat-icon
+      >
+      <mat-icon
+        class="icon-star"
+        data-rank="2"
+        (mouseenter)="mouseOverStars($event)"
+        (click)="getSkillLevelFilter($event)"
+        >grade</mat-icon
+      >
+      <mat-icon
+        class="icon-star"
+        data-rank="3"
+        (mouseenter)="mouseOverStars($event)"
+        (click)="getSkillLevelFilter($event)"
+        >grade</mat-icon
+      >
+      <mat-icon
+        class="icon-star"
+        data-rank="4"
+        (mouseenter)="mouseOverStars($event)"
+        (click)="getSkillLevelFilter($event)"
+        >grade</mat-icon
+      >
+      <mat-icon
+        class="icon-star"
+        data-rank="5"
+        (mouseenter)="mouseOverStars($event)"
+        (click)="getSkillLevelFilter($event)"
+        >grade</mat-icon
+      >
+    </div>
+
+    <div class="skill-levels-legend">
+      <h1 mat-dialog-title>Skill Levels Legend</h1>
+
+      <div fxLayout="column" fxLayoutAlign="space-between center">
+        <div class="skill-level-row" *ngFor="let level of this.skillLevels">
+          <div class="level-legend-col1">
+            <p class="level-name">{{ level.name }}</p>
+            <mat-icon
+              *ngFor="let i of [0, 1, 2, 3, 4]"
+              class="skill-level-legend-stars"
+              [ngClass]="i < level.dataRank ? 'blue-icon' : ''"
+              >grade</mat-icon
+            >
+          </div>
+
+          <div class="level-legend-col2">
+            <mat-card-subtitle class="level-desc">{{ level.description }} </mat-card-subtitle>
+            <mat-card-subtitle class="level-exp">{{ level.experience }} </mat-card-subtitle>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider-bottom">
+      <mat-divider></mat-divider>
+    </div>
+    <div>
+      <button
+        class="save-skill-button"
+        mat-raised-button
+        [disabled]="!editSkillForm.valid"
+        color="primary"
+        (click)="updateSkill()"
+      >
+        Update
+      </button>
+      <button class="discard-button" mat-button color="accent" mat-dialog-close>Discard</button>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="isUpdateSkillDescription()">
+  <mat-card-title>Edit Skill</mat-card-title>
+  <div class="divider-top">
+    <mat-divider></mat-divider>
+  </div>
+  <div style="margin-top: 15px">
+    <mat-card-subtitle class="info-messages"
+      >We would like to know more about your expertise for this skill and your chosen skill level. If you prefer not to
+      say, you can skip this.</mat-card-subtitle
+    >
+  </div>
+
+  <h1 mat-dialog-title style="margin-top: 20px">Describe Your Skill Level</h1>
+  <form class="addSkillForm" [formGroup]="editSkillForm" (submit)="editSkillFromForm()">
+    <mat-form-field appearance="outline">
+      <textarea
+        formControlName="description"
+        matInput
+        [ngModelOptions]="{ standalone: true }"
+        rows="10"
+        cols="40"
+        placeholder="Type here..."
+      ></textarea>
+    </mat-form-field>
+
+    <div class="divider-bottom">
+      <mat-divider></mat-divider>
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="save-skill-button"
+        mat-raised-button
+        color="primary"
+        mat-dialog-close
+        (click)="setDescription(skillDescription)"
+      >
+        Save
+      </button>
+      <button type="submit" class="discard-button" mat-button color="accent" mat-dialog-close>Skip</button>
+    </div>
+  </form>
+</div>

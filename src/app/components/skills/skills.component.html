@@ -1,0 +1,78 @@
+<app-breadcumb-toolbar breadcumbPath="Skills"></app-breadcumb-toolbar>
+
+<div>
+  <mat-card-title class="page-title">My Skills List</mat-card-title>
+
+  <mat-card-subtitle *ngIf="employee" class="counter-skill-subtitle">
+    <div *ngIf="skills.length === 1; else elseBlock">You have {{ skills.length }} skill</div>
+    <ng-template #elseBlock>You have {{ skills.length }} skills</ng-template></mat-card-subtitle
+  >
+</div>
+
+<div *ngIf="employee">
+  <div class="cardArea">
+    <mat-card
+      *ngFor="let skill of skills; let i = skill; let odd = odd; let even = even; index as j"
+      [class.odd]="odd"
+      [class.even]="even"
+      class="skills-cards-list"
+      [id]="skill.id"
+    >
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-card-header>
+          <div fxLayoutAlign="start center" mat-card-avatar class="card-skill-numbering">{{ j + 1 }}</div>
+
+          <mat-card-title fxLayoutAlign="center center">{{ skill.skillname }} </mat-card-title>
+
+          <mat-card-subtitle>
+            <div class="star-wrapper">
+              <p>Skill level</p>
+              <!-- Stars -->
+              <div class="skill-level-stars">
+                <mat-icon class="icon-star" data-rank="1">grade</mat-icon>
+                <mat-icon class="icon-star" data-rank="2">grade</mat-icon>
+                <mat-icon class="icon-star" data-rank="3">grade</mat-icon>
+                <mat-icon class="icon-star" data-rank="4">grade</mat-icon>
+                <mat-icon class="icon-star" data-rank="5">grade</mat-icon>
+              </div>
+            </div>
+          </mat-card-subtitle>
+        </mat-card-header>
+
+        <div>
+          <div class="div-desc">
+            <mat-card-subtitle *ngIf="isLargeDescription(skill)" class="description"
+              >{{ smallDesc }}...
+              <div class="more-click">
+                <a (click)="openDescriptionDialog(skill, true)"> MORE </a>
+              </div>
+            </mat-card-subtitle>
+            <mat-card-subtitle *ngIf="!isLargeDescription(skill)" class="description">{{
+              skill.description
+            }}</mat-card-subtitle>
+          </div>
+        </div>
+      </div>
+      <div class="divider">
+        <mat-divider></mat-divider>
+      </div>
+      <div class="date">Added on: {{ skill.created_at | date }}</div>
+      <mat-card-actions>
+        <button class="btn" style="color: #c62828" mat-button (click)="openDeleteSkillDialog(skill)">
+          Delete Skill
+        </button>
+        <button class="btn" style="color: #03a9f4" mat-button (click)="openEditSkillDialog(skill)">Edit Skill</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+<div *ngIf="employee">
+  <div *ngIf="skills.length === 0" class="no-added-skills-subtitle">
+    <mat-card-subtitle>No added skills.</mat-card-subtitle>
+  </div>
+</div>
+
+<button class="add-new-skill-button" mat-raised-button (click)="openAddNewSkillDialog()" color="primary">
+  Add New Skill
+</button>
